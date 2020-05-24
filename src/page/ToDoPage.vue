@@ -3,20 +3,20 @@
         <div class="task-zone">
             <div class="drop-zone">
                 <h1>To-Do</h1>
-                <div class="drag-el" >
-                    Item A
+                <div class="drag-el" v-for="task in taskTodo" :key="task.id" >
+                    {{ task.title }}
                 </div>
             </div>
             <div class="drop-zone">
                 <h1>Doing</h1>
-                <div class="drag-el" >
-                    Item B
+                <div class="drag-el" v-for="task in taskDoing" :key="task.id" >
+                    {{ task.title }}
                 </div>
             </div>
             <div class="drop-zone">
                 <h1>Done</h1>
-                <div class="drag-el" >
-                    Item C
+                <div class="drag-el" v-for="task in taskDone" :key="task.id" >
+                    {{ task.title }}
                 </div>
             </div>
         </div>
@@ -25,7 +25,44 @@
 
 <script>
 export default {
-    name: 'ToDoPage'
+    name: 'ToDoPage',
+    data(){
+        return{
+            tasks:[
+                {
+                    id: 1,
+                    title: 'Item A',
+                    status: 'todo'
+                },
+                {
+                    id: 2,
+                    title: 'Item B',
+                    status: 'doing'
+                },
+                {
+                    id: 3,
+                    title: 'Item C',
+                    status: 'doing'
+                },
+                {
+                    id: 4,
+                    title: 'Item D',
+                    status: 'done'
+                }
+            ]
+        }
+    },
+    computed:{
+        taskTodo(){
+            return this.tasks.filter(task => task.status === 'todo')
+        },
+        taskDoing(){
+            return this.tasks.filter(task => task.status === 'doing')
+        },
+        taskDone(){
+            return this.tasks.filter(task => task.status === 'done')
+        }
+    }
 }
 </script>
 
