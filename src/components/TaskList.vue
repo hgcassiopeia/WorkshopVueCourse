@@ -97,7 +97,6 @@ export default {
         },
         addTask(newTask){
             let newId = (this.tasks.length + 1)
-            console.log(newId)
             const newTitle = newTask
             this.tasks.push({ id: newId, title: newTitle, status: 'todo' })
             this.newTask = "";
