@@ -1,21 +1,21 @@
 <template>
     <div class="container">
         <div class="task-zone">
-            <div class="drop-zone">
+            <div class="drop-zone" @drop="onDrop($event, 'todo')" @dragover.prevent @dragenter.prevent>
                 <h1>To-Do</h1>
-                <div class="drag-el" v-for="task in taskTodo" :key="task.id" >
+                <div class="drag-el" v-for="task in taskTodo" :key="task.id" draggable @dragstart="onStart($event, task)">
                     {{ task.title }}
                 </div>
             </div>
-            <div class="drop-zone">
+            <div class="drop-zone" @drop="onDrop($event, 'doing')" @dragover.prevent @dragenter.prevent>
                 <h1>Doing</h1>
-                <div class="drag-el" v-for="task in taskDoing" :key="task.id" >
+                <div class="drag-el" v-for="task in taskDoing" :key="task.id" draggable @dragstart="onStart($event, task)">
                     {{ task.title }}
                 </div>
             </div>
-            <div class="drop-zone">
+            <div class="drop-zone" @drop="onDrop($event, 'done')" @dragover.prevent @dragenter.prevent>
                 <h1>Done</h1>
-                <div class="drag-el" v-for="task in taskDone" :key="task.id" >
+                <div class="drag-el" v-for="task in taskDone" :key="task.id" draggable @dragstart="onStart($event, task)">
                     {{ task.title }}
                 </div>
             </div>
@@ -61,6 +61,18 @@ export default {
         },
         taskDone(){
             return this.tasks.filter(task => task.status === 'done')
+        }
+    },
+    methods:{
+        onStart(e, task){
+            e.dataTransfer.dropEffect = 'move'
+            e.dataTransfer.effectAllowed = 'move'
+            e.dataTransfer.setData('taskId', task.id)
+        },
+        onDrop(e, newStatus){
+            const taskId = e.dataTransfer.getData('taskId')
+            const task = this.tasks.find(task => task.id == taskId)
+            task.status = newStatus
         }
     }
 }
