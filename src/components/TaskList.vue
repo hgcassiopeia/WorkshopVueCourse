@@ -10,7 +10,7 @@
                 <div class="drag-el" v-for="task in taskTodo" :key="task.id" draggable @dragstart="onStart($event, task)">
                     <span v-if="editTask != task.id">{{ task.title }}</span>
                     <input v-else class="edit-task" type="text" v-model="task.title">
-
+                    <br>
                     <button v-if="editTask != task.id" type="button" @click="onEdit(task)">Edit</button>
                     <button v-else type="button" @click="editedTask(task)">Save</button>
                     <button type="button" @click="deleteTask(task.id)">Delete</button>
@@ -21,7 +21,7 @@
                 <div class="drag-el" v-for="task in taskDoing" :key="task.id" draggable @dragstart="onStart($event, task)">
                     <span v-if="editTask != task.id">{{ task.title }}</span>
                     <input v-else class="edit-task" type="text" v-model="task.title">
-
+                    <br>
                     <button v-if="editTask != task.id" type="button" @click="onEdit(task)">Edit</button>
                     <button v-else type="button" @click="editedTask(task)">Save</button>
                     <button type="button" @click="deleteTask(task.id)">Delete</button>
@@ -32,7 +32,7 @@
                 <div class="drag-el" v-for="task in taskDone" :key="task.id" draggable @dragstart="onStart($event, task)">
                     <span v-if="editTask != task.id">{{ task.title }}</span>
                     <input v-else class="edit-task" type="text" v-model="task.title">
-
+                    <br>
                     <button v-if="editTask != task.id" type="button" @click="onEdit(task)">Edit</button>
                     <button v-else type="button" @click="editedTask(task)">Save</button>
                     <button type="button" @click="deleteTask(task.id)">Delete</button>
