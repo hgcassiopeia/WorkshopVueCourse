@@ -43,34 +43,17 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
     name: 'TaskList',
+    created(){
+        this.getTask();
+    },
     data(){
         return{
             newTask: "",
             editTask: "",
-            tasks:[
-                {
-                    id: 1,
-                    title: 'Item A',
-                    status: 'todo'
-                },
-                {
-                    id: 2,
-                    title: 'Item B',
-                    status: 'doing'
-                },
-                {
-                    id: 3,
-                    title: 'Item C',
-                    status: 'doing'
-                },
-                {
-                    id: 4,
-                    title: 'Item D',
-                    status: 'done'
-                }
-            ]
+            tasks:[]
         }
     },
     computed:{
@@ -95,22 +78,27 @@ export default {
             const task = this.tasks.find(task => task.id == taskId)
             task.status = newStatus
         },
-        addTask(newTask){
-            let newId = (this.tasks.length + 1)
+        async getTask(){
+            const { data } = await axios.get(`http://localhost:3000/tasks`)
+            this.tasks = data
+        },
+        async addTask(newTask){
             const newTitle = newTask
-            this.tasks.push({ id: newId, title: newTitle, status: 'todo' })
+            await axios.post(`http://localhost:3000/tasks`, { title: newTitle, status: 'todo' })
+            this.getTask();
             this.newTask = "";
         },
-        deleteTask(taskId){
-            this.tasks = this.tasks.filter(task => task.id != taskId)
+        async deleteTask(taskId){
+            await axios.delete(`http://localhost:3000/tasks/${taskId}`)
+            this.getTask();
         },
         onEdit(task){
             this.editTask = task.id
         },
-        editedTask(updateTask){
-            const task = this.tasks.find(task => task.id == updateTask.id)
-            task.title = updateTask.title
+        async editedTask(updateTask){
+            await axios.put(`http://localhost:3000/tasks/${updateTask.id}`, updateTask)
             this.editTask = null
+            this.getTask();
         }
     }
 }

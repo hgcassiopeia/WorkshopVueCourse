@@ -1,30 +1,83 @@
 {
-    "tasks": [
-      { "id": 1, "title": "run 1 km.", "status": "todo" },
-      { "id": 2, "title": "read a book", "status": "todo" },
-      { "id": 3, "title": "dinner with friend", "status": "doing" },
-      { "id": 4, "title": "do homework", "status": "done" }
-    ],
-    "archives": [
-      { 
-        "date": "22-05-2020", 
-        "time": "19:00", 
-        "tasks": [
-          { "id": 1, "title": "learn vue.js", "status": "done" },
-          { "id": 2, "title": "play a game 5 round", "status": "done" },
-          { "id": 3, "title": "buy a soap", "status": "done" },
-          { "id": 4, "title": "pay for a gift", "status": "done" }
-        ] 
-      },
-      { 
-        "date": "23-05-2020", 
-        "time": "19:00", 
-        "tasks": [
-          { "id": 1, "title": "watch netflix", "status": "done" },
-          { "id": 2, "title": "go to event", "status": "done" },
-          { "id": 3, "title": "excercise", "status": "done" },
-          { "id": 4, "title": "walk to siam", "status": "done" }
-        ] 
-      }
-    ]
+  "tasks": [
+    {
+      "id": 1,
+      "title": "run 1 km.",
+      "status": "todo"
+    },
+    {
+      "id": 2,
+      "title": "read a book",
+      "status": "todo"
+    },
+    {
+      "id": 3,
+      "title": "dinner with friend",
+      "status": "doing"
+    },
+    {
+      "id": 4,
+      "title": "do homework",
+      "status": "done"
+    },
+    {
+      "title": "Test 56",
+      "status": "doing",
+      "id": 5
+    }
+  ],
+  "archives": [
+    {
+      "date": "22-05-2020",
+      "time": "19:00",
+      "tasks": [
+        {
+          "id": 1,
+          "title": "learn vue.js",
+          "status": "done"
+        },
+        {
+          "id": 2,
+          "title": "play a game 5 round",
+          "status": "done"
+        },
+        {
+          "id": 3,
+          "title": "buy a soap",
+          "status": "done"
+        },
+        {
+          "id": 4,
+          "title": "pay for a gift",
+          "status": "done"
+        }
+      ]
+    },
+    {
+      "date": "23-05-2020",
+      "time": "19:00",
+      "tasks": [
+        {
+          "id": 1,
+          "title": "watch netflix",
+          "status": "done"
+        },
+        {
+          "id": 2,
+          "title": "go to event",
+          "status": "done"
+        },
+        {
+          "id": 3,
+          "title": "excercise",
+          "status": "done"
+        },
+        {
+          "id": 4,
+          "title": "walk to siam",
+          "status": "done"
+        }
+      ]
+    }
+  ]
 }

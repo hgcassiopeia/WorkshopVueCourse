@@ -1,34 +1,22 @@
 <template>
-    <div>
-        <CardList :archives="archives" />
-    </div>
+    <CardList :archives="archives" />
 </template>
 
 <script>
-import CardList from '../components/CardList'
+import axios from 'axios'
+import CardList from '../components/CardList.vue'
 export default {
     name: 'ArchivePage',
-    components: { CardList },
+    components: { 
+        CardList 
+    },
+    async created(){
+        const { data } = await axios.get(`http://localhost:3000/archives`)
+        this.archives = data
+    },
     data(){
         return {
-            archives:[
-                {
-                    date: "22-05-2020",
-                    time: "19:00",
-                    tasks: [
-                        { id: 1, title: "Item A", status: "done" },
-                        { id: 2, title: "Item B", status: "done" },
-                    ]
-                },
-                {
-                    date: "24-05-2020",
-                    time: "19:00",
-                    tasks: [
-                        { id: 1, title: "Item A", status: "done" },
-                        { id: 2, title: "Item B", status: "done" },
-                    ]
-                }
-            ]
+            archives: []
         }
     }
 }
